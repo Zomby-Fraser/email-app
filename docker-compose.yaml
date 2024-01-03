@@ -43,7 +43,7 @@ services:
       - "25:25"
     environment:
       POSTFIX_myhostname: zomby.live
-      ALLOWED_SENDER_DOMAINS: "zomby.live, anotherdomain.com"
+      ALLOWED_SENDER_DOMAINS: "zomby.live"
     volumes:
       - postfix-data:/var/spool/postfix
       - postfix-log:/var/log/postfix
