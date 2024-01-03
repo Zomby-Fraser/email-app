@@ -3,9 +3,11 @@ from dotenv import load_dotenv
 import mysql.connector
 import hashlib
 import database
+import os
 load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = os.environ.get('APP_SECRET')
 
 @app.route('/')
 def hello_world():
