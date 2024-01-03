@@ -31,6 +31,9 @@ def login():
 		user = database.pull(conn, query, (user, hashed_password))
 		conn.close()
 
+		if len(user) == 0:
+			return jsonify({'error': 'Invalid credentials'}), 401
+
 		user = user[0]
 
 		if user:
