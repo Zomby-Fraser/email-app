@@ -52,10 +52,10 @@ services:
     image: dovecot/dovecot
     volumes:
       - dovecot-mail:/var/mail
-      - ./dovecot/dovecot-config/dovecot.conf:/etc/dovecot/dovecot.conf
-      - ./dovecot/dovecot-config/10-auth.conf:/etc/dovecot/conf.d/10-auth.conf
-      - ./dovecot/dovecot-config/10-mail.conf:/etc/dovecot/conf.d/10-mail.conf
-      - ./dovecot/dovecot-config/10-ssl.conf:/etc/dovecot/conf.d/10-ssl.conf
+      - ./dovecot/dovecot.conf:/etc/dovecot/dovecot.conf
+      - ./dovecot/10-auth.conf:/etc/dovecot/conf.d/10-auth.conf
+      - ./dovecot/10-mail.conf:/etc/dovecot/conf.d/10-mail.conf
+      - ./dovecot/10-ssl.conf:/etc/dovecot/conf.d/10-ssl.conf
 
 volumes:
   dovecot-mail:
