@@ -27,9 +27,7 @@ def login():
 		query = '''SELECT 
             u.id AS user_id,
             u.username AS username,
-            ur.users_role_id AS role_id
         FROM Users u
-        INNER JOIN UserRoles ur ON ur.users_id = u.id
         WHERE u.username = %s AND u.password = %s'''
 		user = database.pull(conn, query, (user, hashed_password))
 		conn.close()
@@ -37,8 +35,6 @@ def login():
 		user = user[0]
 
 		if user:
-			session['role_id'] = user['role_id']
-			session['id'] = user['user_id']
 			session['username'] = user['username']
 			return jsonify({'message': 'Login successful'}), 200
 		else:
