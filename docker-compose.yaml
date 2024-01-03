@@ -3,7 +3,7 @@ version: '3'
 services:
   flask:
     build: 
-      context: /flask
+      context: flask
       dockerfile: Dockerfile
     container_name: flask
     ports:
@@ -13,7 +13,7 @@ services:
 
   nginx:
     build:
-      context: /nginx
+      context: nginx
       dockerfile: Dockerfile
     container_name: nginx
     ports:
