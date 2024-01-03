@@ -2,19 +2,36 @@ version: '3'
 
 services:
   flask:
-    build: 
-      context: .
-      dockerfile: flask/Dockerfile
+    build: .
     container_name: flask
     ports:
       - "5000:5000"
+    depends_on:
+      - db
 
   nginx:
     build:
       context: .
-      dockerfile: nginx/Dockerfile
+      dockerfile: Dockerfile.nginx
     container_name: nginx
     ports:
       - "80:80"
     depends_on:
       - flask
+
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'fraser'
+      MYSQL_PASSWORD: 'QJhD(:NdfS7E-Uz]6q<xsX'
+      MYSQL_ROOT_PASSWORD: 'U;PR`AFqW<K(GvZm7pYgzx'
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:
