@@ -26,7 +26,7 @@ def login():
 
 		query = '''SELECT 
             u.id AS user_id,
-            u.username AS username,
+            u.username AS username
         FROM Users u
         WHERE u.username = %s AND u.password = %s'''
 		user = database.pull(conn, query, (user, hashed_password))
