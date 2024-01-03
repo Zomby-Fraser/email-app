@@ -12,6 +12,7 @@ async function login(event) {
     });
     if (response.ok) {
         console.log('Update Successful.');
+        window.location.href = '/accounts';
     }
     else {
         console.error('Update failed:', response.status, response.statusText);

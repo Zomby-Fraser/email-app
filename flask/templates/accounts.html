@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accounts</title>
+</head>
+<body>
+    <h1>User Emails</h1>
+    {% for user, emails in user_emails.items() %}
+        <h2>{{ user }}</h2>
+        <ul>
+            {% for email in emails %}
+                <li>{{ email }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>

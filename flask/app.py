@@ -4,10 +4,27 @@ import mysql.connector
 import hashlib
 import database
 import os
+import pwd
 load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('APP_SECRET')
+
+@app.route('/accounts')
+def accounts():
+    user_emails = {}
+    users = pwd.getpwall()  # Get all accounts
+    for user in users:
+        mail_dir = f'/home/{user.pw_name}/Maildir/new/'
+        try:
+            # List all files in the user's mail directory
+            emails = os.listdir(mail_dir)
+            user_emails[user.pw_name] = emails
+        except FileNotFoundError:
+            # If the mail directory does not exist, skip the user
+            continue
+
+    return render_template('accounts.html', user_emails=user_emails)
 
 @app.route('/')
 def hello_world():
