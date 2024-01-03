@@ -47,7 +47,7 @@ services:
     volumes:
       - postfix-data:/var/spool/postfix
       - postfix-log:/var/log/postfix
-      # - ./postfix/main.cf:/etc/postfix/main.cf
+      - ./postfix/main.cf:/etc/postfix/main.cf
 
   dovecot:
     image: dovecot/dovecot
