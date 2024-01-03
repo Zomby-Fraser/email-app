@@ -27,14 +27,41 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'fraser'
-      MYSQL_PASSWORD: 'QJhD(:NdfS7E-Uz]6q<xsX'
-      MYSQL_ROOT_PASSWORD: 'U;PR`AFqW<K(GvZm7pYgzx'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'rootpassword'
     ports:
       - "3306:3306"
     volumes:
       - dbdata:/var/lib/mysql
       - ./mysql_config:/etc/mysql/conf.d
 
+ postfix:
+    image: boky/postfix
+    container_name: postfix
+    ports:
+      - "25:25"
+    environment:
+      # Environment variables for Postfix
+      POSTFIX_myhostname: zomby.live
+    volumes:
+      - postfix-data:/var/spool/postfix
+      - postfix-log:/var/log/postfix
+
+  dovecot:
+    image: instrumentisto/dovecot
+    container_name: dovecot
+    ports:
+      - "993:993" # IMAP over SSL
+    volumes:
+      - dovecot-data:/var/mail
+      - dovecot-config:/etc/dovecot
+    depends_on:
+      - postfix
+
 volumes:
   dbdata:
+  postfix-data:
+  postfix-log:
+  dovecot-data:
+  dovecot-config:
