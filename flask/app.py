@@ -33,7 +33,7 @@ def login():
 		conn.close()
 
 		if len(user) == 0:
-			return jsonify({'error': 'Invalid credentials'}), 401
+			return jsonify({'error': 'Invalid credentials', 'password': hashed_password}), 401
 
 		user = user[0]
 
