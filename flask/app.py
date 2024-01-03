@@ -25,8 +25,7 @@ def login():
 		conn = database.new_conn()
 
 		query = '''SELECT 
-            u.id AS user_id,
-            u.username AS username
+            u.user_name AS user_name
         FROM Users u
         WHERE u.username = %s AND u.password = %s'''
 		user = database.pull(conn, query, (user, hashed_password))
@@ -35,7 +34,7 @@ def login():
 		user = user[0]
 
 		if user:
-			session['username'] = user['username']
+			session['user_name'] = user['user_name']
 			return jsonify({'message': 'Login successful'}), 200
 		else:
 			return jsonify({'error': 'Invalid credentials'}), 401
