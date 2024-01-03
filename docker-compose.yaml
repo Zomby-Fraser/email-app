@@ -58,6 +58,7 @@ services:
       - ./dovecot/dovecot-config/10-ssl.conf:/etc/dovecot/conf.d/10-ssl.conf
 
 volumes:
+  dovecot-mail:
   dbdata:
   postfix-data:
   postfix-log:
