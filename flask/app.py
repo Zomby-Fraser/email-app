@@ -20,6 +20,7 @@ def login():
 		return jsonify({'error': 'Missing username or password'}), 400
 
 	hashed_password = hashlib.sha256(password.encode()).hexdigest()
+	print(hashed_password)
 
 	try:
 		conn = database.new_conn()
