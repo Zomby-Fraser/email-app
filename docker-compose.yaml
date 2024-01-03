@@ -35,7 +35,7 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
       - ./mysql_config:/etc/mysql/conf.d
-
+      
  postfix:
     image: boky/postfix
     container_name: postfix
