@@ -42,8 +42,8 @@ services:
     ports:
       - "25:25"
     environment:
-      # Environment variables for Postfix
       POSTFIX_myhostname: zomby.live
+      ALLOWED_SENDER_DOMAINS: "zomby.live, anotherdomain.com"
     volumes:
       - postfix-data:/var/spool/postfix
       - postfix-log:/var/log/postfix
