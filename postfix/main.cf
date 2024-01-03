@@ -59,11 +59,11 @@ message_size_limit = 0
 myhostname = zomby.live
 
 # Set Dovecot as the local delivery agent
-virtual_transport = lmtp:unix:private/dovecot-lmtp
+# virtual_transport = lmtp:unix:private/dovecot-lmtp
 
 # Virtual mailbox settings
-virtual_mailbox_domains = zomby.live # Replace with your domain
-virtual_mailbox_maps = hash:/etc/postfix/virtual
+# virtual_mailbox_domains = zomby.live # Replace with your domain
+# virtual_mailbox_maps = hash:/etc/postfix/virtual
 
-virtual_transport = lmtp:dovecot:24
+# virtual_transport = lmtp:dovecot:24
 
