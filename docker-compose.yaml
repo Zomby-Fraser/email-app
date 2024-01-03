@@ -27,9 +27,9 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'user'
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'rootpassword'
+      MYSQL_USER: 'fraser'
+      MYSQL_PASSWORD: 'QJhD:NdfS7E-Uz6q<xsX'
+      MYSQL_ROOT_PASSWORD: 'U;PR`AFqW<K(GvZm7pYgzx'
     ports:
       - "3306:3306"
     volumes:
@@ -49,15 +49,13 @@ services:
       - postfix-log:/var/log/postfix
 
   dovecot:
-    image: instrumentisto/dovecot
-    container_name: dovecot
-    ports:
-      - "993:993" # IMAP over SSL
+    image: dovecot/dovecot
     volumes:
-      - dovecot-data:/var/mail
-      - dovecot-config:/etc/dovecot
-    depends_on:
-      - postfix
+      - dovecot-mail:/var/mail
+      - ./dovecot/dovecot-config/dovecot.conf:/etc/dovecot/dovecot.conf
+      - ./dovecot/dovecot-config/10-auth.conf:/etc/dovecot/conf.d/10-auth.conf
+      - ./dovecot/dovecot-config/10-mail.conf:/etc/dovecot/conf.d/10-mail.conf
+      - ./dovecot/dovecot-config/10-ssl.conf:/etc/dovecot/conf.d/10-ssl.conf
 
 volumes:
   dbdata:

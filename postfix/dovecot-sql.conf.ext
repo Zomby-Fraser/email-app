@@ -1,0 +1,4 @@
+driver = mysql
+connect = host=db dbname=db user=fraser password=QJhD:NdfS7E-Uz6q<xsX
+default_pass_scheme = SHA256-CRYPT
+password_query = SELECT email as user, password FROM email_accounts WHERE email='%u';
