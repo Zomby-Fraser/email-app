@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, session
 from dotenv import load_dotenv
 import mysql.connector
 import hashlib
+import database
 load_dotenv()
 
 app = Flask(__name__)
@@ -30,7 +31,7 @@ def login():
         FROM Users u
         INNER JOIN UserRoles ur ON ur.users_id = u.id
         WHERE u.username = %s AND u.password = %s'''
-		user = database.pull(conn, query, (username, hashed_password))
+		user = database.pull(conn, query, (user, hashed_password))
 		conn.close()
 
 		user = user[0]
