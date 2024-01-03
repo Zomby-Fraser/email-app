@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, session
 from dotenv import load_dotenv
 import mysql.connector
+import hashlib
 load_dotenv()
 
 app = Flask(__name__)
